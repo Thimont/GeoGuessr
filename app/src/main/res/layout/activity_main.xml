@@ -31,12 +31,14 @@
             android:id="@+id/button_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="mediumPlay"
             android:text="Medium" />
 
         <Button
             android:id="@+id/button_expert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="expertPlay"
             android:text="Expert" />
 
         <Button

@@ -7,6 +7,9 @@ public class Emplacement {
     private LatLng min;
     private LatLng max;
 
+    Emplacement() {
+    }
+
     Emplacement(String name, LatLng min, LatLng max) {
         this.name = name;
         this.min = min;

@@ -12,16 +12,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Button b_novice = (Button) findViewById(R.id.button_novice);
-        /*Button b_medium = (Button) findViewById(R.id.button_medium);
-        Button b_expert = (Button) findViewById(R.id.button_expert);
-        Button b_stats = (Button) findViewById(R.id.button_stats);*/
     }
 
-    /** Called when the user taps the Send button */
+    /** Called when the user taps the novice button */
     public void novicePlay(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
         int extra = 1;
+        intent.putExtra("LEVEL", extra);
+        startActivity(intent);
+    }
+
+    /** Called when the user taps the medium button */
+    public void mediumPlay(View view) {
+        Intent intent = new Intent(this, MapsActivity.class);
+        int extra = 2;
+        intent.putExtra("LEVEL", extra);
+        startActivity(intent);
+    }
+
+    /** Called when the user taps the expert button */
+    public void expertPlay(View view) {
+        Intent intent = new Intent(this, MapsActivity.class);
+        int extra = 3;
         intent.putExtra("LEVEL", extra);
         startActivity(intent);
     }
