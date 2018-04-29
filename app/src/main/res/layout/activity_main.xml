@@ -12,6 +12,12 @@
         android:layout_height="match_parent"
         android:layout_weight="0.5"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            map:srcCompat="@color/colorPrimary" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/map_container2"
@@ -45,6 +51,7 @@
             android:id="@+id/button_stats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="statistics"
             android:text="Statistiques" />
     </LinearLayout>
 </LinearLayout>
