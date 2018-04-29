@@ -37,4 +37,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("LEVEL", extra);
         startActivity(intent);
     }
+
+    public void statistics(View view) {
+        Intent intent = new Intent(this, StatisticsActivity.class);
+        startActivity(intent);
+    }
 }
