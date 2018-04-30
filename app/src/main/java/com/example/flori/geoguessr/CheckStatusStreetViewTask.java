@@ -17,6 +17,7 @@ class CheckStatusStreetViewTask extends AsyncTask<URL, Void, String> {
 
     private Exception exception;
 
+    //UTILISATION de AsyncReponse pour recuperer le resultat de la requete en JSON
     public interface AsyncResponse {
         void processFinish(String output);
     }

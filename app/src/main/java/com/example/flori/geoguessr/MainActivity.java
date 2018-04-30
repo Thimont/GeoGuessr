@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /** Called when the user taps the statistics button */
     public void statistics(View view) {
         Intent intent = new Intent(this, StatisticsActivity.class);
         startActivity(intent);

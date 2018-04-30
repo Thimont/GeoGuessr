@@ -41,16 +41,12 @@ public class MapsActivity extends FragmentActivity implements
 
     private GoogleMap mMap;
     private static LatLng RANDOMLOC = null;
-    private static float EARTHICIRC = 20037.5f;
+    private static float EARTHICIRC = 20037.5f; //moitie de la circonference de la Terre
     private static int newInt = -1;
     Random random = new Random();
 
     private int count = 0;
-    private float[] distances = new float[5];
     private float score=0;
-
-    // George St, Sydney
-//    private static final LatLng SYDNEY = new LatLng(48.881756, 2.317638);
 
     private StreetViewPanorama mStreetViewPanorama;
 
@@ -70,6 +66,7 @@ public class MapsActivity extends FragmentActivity implements
             newInt= (int) savedInstanceState.getSerializable("LEVEL");
         }
 
+        //mise a jour des coordonnees
         RANDOMLOC = this.getRANDOMLOC(newInt);
 
         final LatLng markerPosition;
@@ -106,14 +103,10 @@ public class MapsActivity extends FragmentActivity implements
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-//        outState.putParcelable(MARKER_POSITION_KEY, mMarker.getPosition());
     }
 
     @Override
     public void onStreetViewPanoramaChange(StreetViewPanoramaLocation location) {
-        /*if (location != null) {
-            mMarker.setPosition(location.position);
-        }*/
     }
 
     @Override
@@ -143,6 +136,7 @@ public class MapsActivity extends FragmentActivity implements
         proposedLocation.setLatitude(latLng.latitude);
         proposedLocation.setLongitude(latLng.longitude);
 
+        //Trait entre la proposition et la vraie localisation
         Polyline polyline = mMap.addPolyline(new PolylineOptions()
                 .add(latLng, RANDOMLOC)
                 .width(5)
@@ -154,7 +148,6 @@ public class MapsActivity extends FragmentActivity implements
 
         //CALCUL DE DISTANCE AU POINT REEL
         final float distance = correctLocation.distanceTo(proposedLocation)/1000;
-        distances[count] = distance;
 
         //CALCUL DU SCORE
         float tempScore = (1-distance/EARTHICIRC)*100;
@@ -175,7 +168,7 @@ public class MapsActivity extends FragmentActivity implements
                         }
                     });
             alertDialog.show();
-        } else if (count == 4) {
+        } else if (count == 4) { //affichage de la boite de dialogue recapitulative apres la derniere question
             AlertDialog alertDialog = new AlertDialog.Builder(MapsActivity.this).create();
             alertDialog.setTitle("Reponse");
             alertDialog.setMessage("Score : " + tempScore);
@@ -207,7 +200,6 @@ public class MapsActivity extends FragmentActivity implements
         //Listener pour permettre de cliquer
         mMap = googleMap;
         mMap.setOnMapClickListener(this);
-        System.out.println("Count : " + count);
     }
 
     @Override
@@ -219,7 +211,6 @@ public class MapsActivity extends FragmentActivity implements
         ArrayList<Emplacement> emplacements = new ArrayList<>();
         Emplacement emplacement = new Emplacement();
 
-        //TODO Faire en sorte de donner un seul coordonée et de déterminer une zone dans un rayon de x kms
         if (newInt==1) { //NIVEAU FACILE
             emplacements.add(new Emplacement("PARIS", new LatLng(48.842484, 2.308891), new LatLng(48.875257, 2.373030)));
             emplacements.add(new Emplacement("SHIBUYA", new LatLng(35.655178, 139.693350), new LatLng(35.661698, 139.706911)));
